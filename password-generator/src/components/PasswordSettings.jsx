@@ -26,13 +26,14 @@ function PasswordSettings({
   };
 
   const onChangeExcludeTextHandler = (e) => {
-    let value, excludeText;
-    _.debounce(function (e) {
-      value = e.target.value;
-      excludeText = Array.from(new Set(value.toLowerCase().split(""))).join("");
-      console.log(excludeText);
-      onChangeExcludeText(excludeText);
-    }, 1000);
+    let value, newExcludeText;
+    value = e.target.value;
+    newExcludeText = Array.from(new Set(value.toLowerCase().split(""))).join(
+      ""
+    );
+    if (excludeText != newExcludeText) {
+      onChangeExcludeText(newExcludeText);
+    }
   };
   return (
     <CheckboxGroup
